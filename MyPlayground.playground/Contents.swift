@@ -299,14 +299,18 @@ if let moji = valueH["k"]{
 // valueIを宣言
 let valueI: [Any?] = [1,"こんにちわ","こんばんわ",nil,3,100,"よろしく",nil,"お願いします。"]
 
+// 配列は0から始まるのでvalueIの数 -1
 for i in 0...valueI.count - 1 {
-    // 数値を代入
-    if let num = valueI[i] as? Int {
-       print("数値は\(num)です。")
-    // 文字列
-    } else if let value = valueI[i] as? String {
-        print(value)
-    } else {
-        print("値はnilです。")
+    
+    // nilの時の判断
+    if valueI[i] == nil {
+        print("値はnilです")
+    }
+    
+    // valueIをそれぞれの型にダウンキャスティングできるか確認
+    if let value: Int = valueI[i] as? Int {
+        print("数値は\(value)です。")
+    } else if let string = valueI[i] as? String {
+        print(string)
     }
 }
